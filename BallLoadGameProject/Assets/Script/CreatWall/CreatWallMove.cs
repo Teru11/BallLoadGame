@@ -4,24 +4,13 @@ using UnityEngine;
 
 public class CreatWallMove : MonoBehaviour {
 
-    private Vector3 m_pos;
-    PlayerMove playMove;
+    public Transform player;
+    public float distance = 100f;
 
-    // Use this for initialization
-    void Start () {
-        playMove = FindObjectOfType<PlayerMove>();
-        m_pos = transform.position;
+    // Update is called once per frame
+    void Update () {
+        Vector3 creatWllPosition = new Vector3(0, 5, player.position.z);
+        Vector3 relativePos = new Vector3(0, 0, distance);
+        transform.position = creatWllPosition + relativePos;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        moveFowerd();
-	}
-
-    void moveFowerd()
-    {
-        transform.localPosition = m_pos;  // 形状位置を更新
-        m_pos.z += playMove.m_Speed * Time.deltaTime;
-    }
-    
 }

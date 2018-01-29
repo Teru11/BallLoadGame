@@ -5,8 +5,7 @@ using UnityEngine;
 public class LoadCreat : MonoBehaviour {
 
     public GameObject Load;
-    public GameObject nextLoadPos;
-    
+    public GameObject nextLoadPos;   
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -15,7 +14,8 @@ public class LoadCreat : MonoBehaviour {
         if(isPlayer)
         {
             // 次の道をnextLoadPosに生成
-            Instantiate(Load,nextLoadPos.transform.position, Quaternion.identity);
+            var obj = Instantiate(Load,nextLoadPos.transform.position, Quaternion.identity) as GameObject;
+            obj.name = Load.name;
         }
     }
 }

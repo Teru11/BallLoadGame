@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerJump : MonoBehaviour {
 
     public float flap = 1000f;
-    public float gravity = 9.8f;
     Rigidbody rb;
 
 	// Use this for initialization
@@ -16,11 +15,21 @@ public class PlayerJump : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Physics.gravity = new Vector3(0, -gravity, 0);
 
         if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(Vector3.up * flap);
-        }
+            Jump();
+
+        if (Input.GetKeyDown(KeyCode.B))
+            Down();
 	}
+
+    private void Jump()
+    {
+        rb.AddForce(Vector3.up * flap);
+    }
+
+    private void Down()
+    {
+        rb.AddForce(Vector3.down * flap);
+    }
 }

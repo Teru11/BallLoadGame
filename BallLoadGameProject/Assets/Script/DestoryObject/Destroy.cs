@@ -13,6 +13,6 @@ public class Destroy : MonoBehaviour {
     //あったたらTriggerになってるものすべて消す
     private void OnTriggerEnter(Collider collision)
     {
-        Destroy(collision.gameObject);
+        Destroy(collision.gameObject.transform.root.gameObject);
     }
 }

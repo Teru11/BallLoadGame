@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerRotation : MonoBehaviour {
 
+    PlayerMove playermove;
     Rigidbody rb;
     public float m_TurnSpeed;
 
@@ -11,11 +12,15 @@ public class PlayerRotation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
+        playermove = GetComponent<PlayerMove>();
 	}
 
     void FixedUpdate()
     {
-        Turn();
+        if (playermove.moved)
+        {
+            Turn();
+        }
     }
 
     //ボールの回転
